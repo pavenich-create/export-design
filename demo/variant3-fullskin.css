@@ -1,0 +1,209 @@
+/* ============================================================
+   ВАРИАНТ 3 — «ПОЛНЫЙ СКИН»
+   Максимальное приближение к Главная_1 только средствами CSS:
+   палитра + компоненты + типографика (PT Sans / PT Sans Caption
+   уже подключены на сайте) + перекомпоновка шапки и футера
+   (flex-порядок, светлый топбар и меню, тёмный футер).
+   HTML-разметка и функционал не трогаем.
+   ============================================================ */
+
+:root {
+  --nd-teal:        #0c9c8e;
+  --nd-teal-bright: #1ebdad;
+  --nd-teal-light:  #62d9cd;
+  --nd-teal-dark:   #007a7a;
+  --nd-teal-ink:    #0a5f58;
+  --nd-red:         #9d0a0f;
+  --nd-bg:          #f4f9f9;
+  --nd-bg-soft:     #e0f5f3;
+  --nd-text:        #243b3a;
+  --nd-muted:       #6b8a87;
+  --nd-radius:      10px;
+  --nd-shadow:      0 4px 16px rgba(12, 156, 142, 0.10);
+}
+
+/* ================= БАЗА / ТИПОГРАФИКА ================= */
+body {
+  background: var(--nd-bg);
+  font-family: 'PT Sans', Tahoma, sans-serif;
+  color: var(--nd-text);
+}
+h1, h2, h3, .news-header, .promo__title {
+  font-family: 'PT Sans Caption', 'PT Sans', Tahoma, sans-serif;
+}
+a { color: var(--nd-teal-dark); text-decoration: none; }
+a:hover { color: var(--nd-teal-bright); }
+::selection { background: var(--nd-teal-light); }
+
+/* ================= ШАПКА ================= */
+/* Плоская бирюзовая шапка без текстуры и тяжёлых теней */
+.l-header {
+  background: var(--nd-teal) none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  color: #d8f5f2;
+}
+
+/* Топбар — светлая полоса (как header-top-block в новом дизайне) */
+.topline {
+  background: #ffffff;
+  border-bottom: 1px solid #d9edeb;
+  min-height: 42px;
+}
+.topmenu li a {
+  color: var(--nd-teal-ink);
+  border-bottom: none;
+  font-family: 'PT Sans', sans-serif;
+}
+.topmenu li a:hover { color: var(--nd-teal-bright); }
+.topmenu li a[href*="e-respondent.belstat.gov.by"] {
+  color: var(--nd-red);
+  letter-spacing: 1px;
+}
+.topmenu li a:hover[href*="e-respondent.belstat.gov.by"] { color: var(--nd-red); }
+
+/* Название организации */
+.h-logo-txt,
+.h-logo-txt a,
+.h-logo-txt > span {
+  color: #ffffff;
+  text-shadow: none;
+  font-family: 'PT Sans Caption', sans-serif;
+  font-weight: 700;
+}
+.h-about, .h-about-text { color: #eafaf8; }
+
+/* Поиск — «пилюля» */
+.topline .search {
+  border: 1px solid #cfe7e4;
+  border-radius: 20px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+.topline .search > div > input { border-radius: 20px; font-family: 'PT Sans', sans-serif; }
+
+/* Меню — светлая плашка с бирюзовым текстом (header-bottom-block) */
+.h-menu-container,
+.h-menu-container.fixed {
+  background: #ffffff;
+  border-top: 1px solid #d9edeb;
+  -webkit-box-shadow: 0 2px 10px rgba(0, 122, 122, 0.08);
+          box-shadow: 0 2px 10px rgba(0, 122, 122, 0.08);
+}
+.h-menu > li > a {
+  font-family: 'PT Sans', sans-serif;
+  color: var(--nd-teal-ink);
+  font-weight: 700;
+}
+.h-menu > li > a i { color: var(--nd-teal); }
+.l-header .h-menu > li.hover > a {
+  background: var(--nd-teal);
+  color: #ffffff;
+}
+.l-header .h-menu > li.hover > a i { color: #ffffff; }
+.submenu-container {
+  background: #ffffff;
+  border-radius: 0 0 var(--nd-radius) var(--nd-radius);
+  -webkit-box-shadow: var(--nd-shadow);
+          box-shadow: var(--nd-shadow);
+}
+.submenu a:hover { color: var(--nd-teal-dark); }
+
+/* ================= КНОПКИ (fill-button) ================= */
+.button,
+.news-button a,
+input[type="submit"] {
+  background: var(--nd-teal);
+  border: 2px solid var(--nd-teal);
+  color: #ffffff;
+  border-radius: 22px;
+  font-family: 'PT Sans', sans-serif;
+  font-weight: 700;
+  -webkit-transition: background 0.2s, border-color 0.2s;
+       -o-transition: background 0.2s, border-color 0.2s;
+          transition: background 0.2s, border-color 0.2s;
+}
+.button:hover,
+.news-button a:hover,
+input[type="submit"]:hover {
+  background: var(--nd-teal-bright);
+  border-color: var(--nd-teal-bright);
+  color: #ffffff;
+}
+.button:active,
+.news-button a:active {
+  background: var(--nd-teal-dark);
+  border-color: var(--nd-teal-dark);
+}
+
+/* ================= КОНТЕНТ ================= */
+/* Белые карточки */
+.promo,
+.b-related,
+.aside-right__slider,
+.b-map {
+  background: #ffffff;
+  border-radius: var(--nd-radius);
+  -webkit-box-shadow: var(--nd-shadow);
+          box-shadow: var(--nd-shadow);
+}
+
+/* Новости — список с разделителями вместо заливки */
+.news-item {
+  background: transparent;
+  border-bottom: 1px solid #dcecea;
+  padding: 18px 8px 16px;
+}
+.news-item:hover { background: transparent; }
+.news-header {
+  font-size: 16px;
+  line-height: 1.35;
+}
+.news-item .news-header a { color: var(--nd-text); border-bottom: none; }
+.news-item:hover .news-header a { color: var(--nd-teal-dark); border-bottom: none; }
+.news-item .news-header a:hover { color: var(--nd-teal-bright); border-bottom: none; }
+.news-text { color: #45605d; }
+.news-item .date,
+.date {
+  color: var(--nd-muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Акцентные заголовки блоков */
+.promo__title,
+.promo__item p a { color: var(--nd-red); }
+.promo__num { color: var(--nd-teal-dark); }
+
+/* Слайдеры */
+.promo__slider .slick-prev:before,
+.promo__slider .slick-next:before { color: var(--nd-teal); }
+.s-slider .slick-prev,
+.s-slider .slick-next {
+  border: 1px solid rgba(98, 217, 205, 0.6);
+  border-radius: 50%;
+}
+.s-slider .slick-prev:before,
+.s-slider .slick-next:before { color: var(--nd-teal-light); }
+.s-slider .slick-prev:hover,
+.s-slider .slick-next:hover { border-color: #ffffff; background: rgba(0, 122, 122, 0.35); }
+.s-slider .slick-prev:hover:before,
+.s-slider .slick-next:hover:before { color: #ffffff; }
+.slick-dots li.slick-active button:before { color: var(--nd-teal); }
+
+/* Календарь */
+.datepicker--cell.-selected-,
+.datepicker--cell.-selected-.-focus- { background: var(--nd-teal); border-radius: 6px; }
+.datepicker--cell.-current- { color: var(--nd-teal-dark); }
+
+/* ================= ФУТЕР (site-footer) ================= */
+.l-footer {
+  background: var(--nd-teal-ink) none;
+  color: #cfeae7;
+  font-family: 'PT Sans', sans-serif;
+  padding-top: 30px;
+}
+.l-footer a { color: var(--nd-teal-light); }
+.l-footer a:hover { color: #ffffff; }
+.l-footer .dl-footer a { color: #cfeae7; }

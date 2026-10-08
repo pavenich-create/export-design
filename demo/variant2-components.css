@@ -1,0 +1,156 @@
+/* ============================================================
+   ВАРИАНТ 2 — «ПАЛИТРА + КОМПОНЕНТЫ»
+   Цвета нового дизайна + характерные приёмы Главная_1:
+   плоская шапка без текстуры, залитые скруглённые кнопки
+   (fill-button), белые карточки с мягкой тенью, бирюзовое
+   меню. Разметка и сетка не меняются.
+   ============================================================ */
+
+:root {
+  --nd-teal:        #0c9c8e;
+  --nd-teal-bright: #1ebdad;
+  --nd-teal-light:  #62d9cd;
+  --nd-teal-dark:   #007a7a;
+  --nd-red:         #9d0a0f;
+  --nd-bg:          #f2f8f7;
+  --nd-bg-soft:     #e0f5f3;
+  --nd-radius:      8px;
+  --nd-shadow:      0 2px 12px rgba(12, 156, 142, 0.12);
+}
+
+/* ---------- База ---------- */
+body { background: var(--nd-bg); }
+a { color: var(--nd-teal-dark); }
+a:hover { color: var(--nd-teal-bright); }
+::selection { background: var(--nd-teal-light); }
+
+/* ---------- Шапка: плоская, без зелёной текстуры ---------- */
+.l-header {
+  background: var(--nd-teal) none;
+  -webkit-box-shadow: 0 2px 10px rgba(0, 122, 122, 0.25);
+          box-shadow: 0 2px 10px rgba(0, 122, 122, 0.25);
+  color: #d8f5f2;
+}
+.topline { border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
+.topmenu li a { color: #d8f5f2; border-bottom: none; }
+.topmenu li a:hover { color: #ffffff; border-bottom-color: transparent; }
+
+.h-logo-txt,
+.h-logo-txt a,
+.h-logo-txt > span {
+  color: #ffffff;
+  text-shadow: none;
+}
+.h-about, .h-about-text { color: #eafaf8; }
+
+/* Поиск: скруглённая «пилюля» как в новом дизайне */
+.topline .search,
+.topline .search > div > input {
+  border: none;
+  border-radius: 20px;
+}
+.topline .search { -webkit-box-shadow: var(--nd-shadow); box-shadow: var(--nd-shadow); }
+
+/* ---------- Главное меню: бирюзовая плашка, мягкий hover ---------- */
+.h-menu-container,
+.h-menu-container.fixed {
+  background: var(--nd-teal-dark);
+  -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+.h-menu > li > a {
+  color: #ffffff;
+  -webkit-transition: background 0.2s, color 0.2s;
+       -o-transition: background 0.2s, color 0.2s;
+          transition: background 0.2s, color 0.2s;
+}
+.h-menu > li > a i { color: var(--nd-teal-light); }
+.l-header .h-menu > li.hover > a {
+  background: var(--nd-teal-bright);
+  color: #ffffff;
+}
+.l-header .h-menu > li.hover > a i { color: #ffffff; }
+
+/* Подменю — белая карточка */
+.submenu-container {
+  background: #ffffff;
+  border-radius: 0 0 var(--nd-radius) var(--nd-radius);
+  -webkit-box-shadow: var(--nd-shadow);
+          box-shadow: var(--nd-shadow);
+}
+.submenu a:hover { color: var(--nd-teal-dark); }
+
+/* ---------- Кнопки: стиль fill-button нового дизайна ---------- */
+.button,
+.news-button a,
+input[type="submit"] {
+  background: var(--nd-teal);
+  border: 2px solid var(--nd-teal);
+  color: #ffffff;
+  border-radius: 20px;
+  -webkit-transition: background 0.2s, border-color 0.2s;
+       -o-transition: background 0.2s, border-color 0.2s;
+          transition: background 0.2s, border-color 0.2s;
+}
+.button:hover,
+.news-button a:hover,
+input[type="submit"]:hover {
+  background: var(--nd-teal-bright);
+  border-color: var(--nd-teal-bright);
+  color: #ffffff;
+}
+.button:active,
+.news-button a:active {
+  background: var(--nd-teal-dark);
+  border-color: var(--nd-teal-dark);
+}
+
+/* ---------- Карточки контента: белые, скруглённые, мягкая тень ---------- */
+.promo,
+.news-item,
+.b-related,
+.aside-right__slider,
+.b-map {
+  background: #ffffff;
+  border-radius: var(--nd-radius);
+  -webkit-box-shadow: var(--nd-shadow);
+          box-shadow: var(--nd-shadow);
+}
+.news-item:hover { background: var(--nd-bg-soft); }
+.news-item .news-header a:hover {
+  color: var(--nd-teal-dark);
+  border-bottom-color: var(--nd-teal-dark);
+}
+
+/* Заголовки блоков — красный акцент нового дизайна */
+.promo__title,
+.promo__item p a { color: var(--nd-red); }
+
+/* ---------- Слайдеры: бирюзовые стрелки-кружки ---------- */
+.promo__slider .slick-prev:before,
+.promo__slider .slick-next:before { color: var(--nd-teal); }
+.s-slider .slick-prev,
+.s-slider .slick-next {
+  border: 1px solid rgba(98, 217, 205, 0.6);
+  border-radius: 50%;
+}
+.s-slider .slick-prev:before,
+.s-slider .slick-next:before { color: var(--nd-teal-light); }
+.s-slider .slick-prev:hover,
+.s-slider .slick-next:hover { border-color: #ffffff; background: rgba(0, 122, 122, 0.35); }
+.s-slider .slick-prev:hover:before,
+.s-slider .slick-next:hover:before { color: #ffffff; }
+.slick-dots li.slick-active button:before { color: var(--nd-teal); }
+
+/* ---------- Календарь ---------- */
+.datepicker--cell.-selected-,
+.datepicker--cell.-selected-.-focus- { background: var(--nd-teal); border-radius: 6px; }
+.datepicker--cell.-current- { color: var(--nd-teal-dark); }
+
+/* ---------- Футер: тёмно-бирюзовый, плоский ---------- */
+.l-footer {
+  background: var(--nd-teal-dark) none;
+  color: #d8f5f2;
+}
+.l-footer a { color: var(--nd-teal-light); }
+.l-footer a:hover { color: #ffffff; }

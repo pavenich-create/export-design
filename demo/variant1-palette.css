@@ -1,0 +1,100 @@
+/* ============================================================
+   ВАРИАНТ 1 — «ПАЛИТРА»
+   Только замена цветовых токенов старой темы на токены нового
+   дизайна (Главная_1). Разметка, сетка, шрифты — без изменений.
+   Подключается ПОСЛЕДНИм среди стилей.
+   ============================================================ */
+
+:root {
+  /* Токены нового дизайна (из Главная_1) */
+  --nd-teal:        #0c9c8e; /* основной */
+  --nd-teal-bright: #1ebdad; /* яркий / hover */
+  --nd-teal-light:  #62d9cd; /* светлый акцент */
+  --nd-teal-dark:   #007a7a; /* тёмный */
+  --nd-red:         #9d0a0f; /* акцентный красный */
+  --nd-bg:          #f2f8f7; /* фон страницы */
+  --nd-bg-soft:     #e0f5f3; /* мягкая заливка / hover */
+}
+
+/* --- Фон страницы: светло-зелёный -> светлый нейтрально-бирюзовый --- */
+body { background: var(--nd-bg); }
+
+/* --- Ссылки: тёмно-зелёные -> тёмно-бирюзовые --- */
+a { color: var(--nd-teal-dark); }
+
+/* --- Шапка и футер: зелёная текстура -> бирюза --- */
+.l-header,
+.l-footer {
+  background: var(--nd-teal);
+}
+.l-header { color: #c9f0ec; }
+.topline { border-bottom-color: rgba(255, 255, 255, 0.35); }
+
+/* Верхнее меню (topmenu) */
+.topmenu li a { color: #c9f0ec; }
+.topmenu li a:hover { color: #ffffff; border-bottom-color: #c9f0ec; }
+
+/* Название организации (было жёлтое #e7dc90) */
+.h-logo-txt,
+.h-logo-txt a,
+.h-logo-txt > span { color: #ffffff; text-shadow: 0 2px 2px rgba(0, 0, 0, 0.25); }
+
+/* Контакты/соцсети в шапке */
+.h-about, .h-about-text { color: #e6faf8; }
+
+/* --- Главное меню: тёмно-зелёное -> тёмно-бирюзовое --- */
+.h-menu-container,
+.h-menu-container.fixed { background: rgba(0, 122, 122, 0.92); }
+.h-menu > li > a { color: #ffffff; }
+.h-menu > li > a i { color: var(--nd-teal-light); }
+.l-header .h-menu > li.hover > a { background: #ffffff; color: var(--nd-teal-dark); }
+.l-header .h-menu > li.hover > a i { color: var(--nd-teal-dark); }
+
+/* Выпадающие подменю */
+.submenu-container { background: #ffffff; }
+.submenu a:hover { color: var(--nd-teal-dark); }
+
+/* Поиск в шапке */
+.topline .search { border-color: var(--nd-teal-dark); }
+
+/* --- Красный акцент: #a30021 -> #9d0a0f (красный нового дизайна) --- */
+.promo__title,
+.promo__item p a,
+.promo__slider .slick-prev:before,
+.promo__slider .slick-next:before { color: var(--nd-red); }
+
+/* --- Ховеры и заливки: зелёные -> бирюзовые --- */
+.news-item:hover { background: var(--nd-bg-soft); }
+.news-item .news-header a:hover { color: var(--nd-teal-dark); border-bottom-color: var(--nd-teal-dark); }
+
+/* --- Кнопки: зелёный контур -> бирюзовый контур --- */
+.button {
+  border-color: var(--nd-teal);
+  color: var(--nd-teal-dark);
+}
+.button:hover { background: var(--nd-teal); color: #ffffff; }
+.button:active { border-color: var(--nd-teal-dark); background: var(--nd-teal-dark); }
+
+/* --- Слайдеры: жёлто-зелёные стрелки -> светло-бирюзовые --- */
+.s-slider .slick-prev:before,
+.s-slider .slick-next:before { color: rgba(98, 217, 205, 0.8); }
+.s-slider .slick-prev,
+.s-slider .slick-next { border-color: rgba(98, 217, 205, 0.45); }
+.s-slider .slick-prev:hover,
+.s-slider .slick-next:hover { border-color: rgba(98, 217, 205, 0.8); }
+.s-slider .slick-prev:hover:before,
+.s-slider .slick-next:hover:before { color: #ffffff; }
+.slick-dots li.slick-active button:before { color: var(--nd-teal); }
+
+/* --- Футер --- */
+.l-footer a { color: var(--nd-teal-light); }
+.l-footer a:hover { color: #ffffff; }
+
+/* --- Календарь (datepicker): акценты -> бирюза --- */
+.datepicker--cell.-selected-,
+.datepicker--cell.-selected-.-focus- { background: var(--nd-teal); }
+.datepicker--cell.-current- { color: var(--nd-teal-dark); }
+
+/* --- Прочие зелёные мелочи --- */
+.ico-check, .ico-arrow-down { color: inherit; }
+::selection { background: var(--nd-teal-light); }
